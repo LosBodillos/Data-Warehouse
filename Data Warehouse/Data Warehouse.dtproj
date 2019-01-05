@@ -26,26 +26,44 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">BODIL</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAVyQCiw96mUG07+BbqKIKcAAAAAACAAAAAAAQZgAAAAEAACAAAABbTcgxSAymP0Ang2cDYEinqU9L79WdQLZnJSS6ZscqHQAAAAAOgAAAAAIAACAAAACFeIy5gOI1ORgctT8zhZ88aMXb+5Ka9HVNhzR5Bmeqk5AAAABIvOQGPNAAkzn9CnaqIgiSxnuY5+tPg4eoR9DZibqTaumygINCeUFaMVHCKwnCXZ4lbjAMm3RuKEN2+lhPKyyY77T4JZNd/YcbVIHqMcD6l751D0nN7+CTgZHmeRdY/Z22hBWkiXZ9fq/YRSq8OoYkttGXvAQnK7ywQafDnG57Fd9LISguANuhPJep8kX9kZ5AAAAAYgHIGRC4ZjPQrtswp88hb0J+XragPrI/2zI3BfPRN122aYi0YO5AF80kW/ZvRA7kU25MOUAXmy9iMtDt9ULNEQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAVyQCiw96mUG07+BbqKIKcAAAAAACAAAAAAAQZgAAAAEAACAAAADK9xj4CJtZbPKvRSZESxWATjRxXV+7bzCkkbcCO3KougAAAAAOgAAAAAIAACAAAABy2BGkYTtehrug5Fkkadb29GY844mxCcXdMTzeDlmLWZAAAABI3XnP6KNHfPCf+v13J7kdBB8TOLELd8OmR0ZUVmxKBIgtIf7La5k08CGIeLsq7K/fJTs1tMs+0R5WdV39Gm+97BBdGvRQhoGBVicoeoMhhPEceUzCdT7CbVOZV4GSx20xZ1os+8/mLQARvJd4K1bGACTD22G/MnmS2FizrldddUbctpcjiFA6ZqLd7nfzIChAAAAAnrRrI5C4j/xvaCWw04fYOlZwefq8q8zNrv9MYYK+c9dM66mnAHfHbNmO/xbFo04tSNaziHqHS/4UMC5inwXq/A==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
-          <SSIS:Package SSIS:Name="Package.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="stagingArea.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="dataWarehouse.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers />
         <SSIS:DeploymentInfo>
           <SSIS:ProjectConnectionParameters />
           <SSIS:PackageInfo>
-            <SSIS:PackageMetaData SSIS:Name="Package.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="stagingArea.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{EF273187-91FB-402D-95E4-B22CDA835E74}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{C0D10B28-82C7-46D5-A5C2-7813DEC80D74}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">stagingArea</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{AE6EE5F4-C6BA-4EB4-A747-F3972187EED0}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{EE4AA5E0-B62D-4589-9C55-74E1FFE5DFF0}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="dataWarehouse.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{381F4010-BE4D-429C-B386-E1ECA9C91347}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">dataWarehouse</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{3C236A89-C06A-4FF6-81A4-53FF99649679}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
