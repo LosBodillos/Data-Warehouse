@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Data Warehouse", "Data Warehouse\Data Warehouse.dtproj", "{FB53E65E-8B43-4300-8DB9-0746CBD8FEC8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB53E65E-8B43-4300-8DB9-0746CBD8FEC8}.Development|Default.ActiveCfg = Development
+		{FB53E65E-8B43-4300-8DB9-0746CBD8FEC8}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2F6A0BBF-6416-469D-BB7A-F00AA242CF58}
+	EndGlobalSection
+EndGlobal
