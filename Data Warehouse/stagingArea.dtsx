@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="stagingArea"
   DTS:PackageType="5"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{F045F420-9097-42D5-A775-6B78F2EB1802}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{56E8E31E-2775-408B-AF6E-38A246A280AC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -54,6 +54,46 @@
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectionString="Data Source=BODIL\SQLEXPRESS;Initial Catalog=Stage_Db;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-SV09T1D3\SQLEXPRESS.dwCopy]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A29FF59D-B03D-4BCF-8901-D08DB16F080D}"
+      DTS:ObjectName="LAPTOP-SV09T1D3\SQLEXPRESS.dwCopy">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LAPTOP-SV09T1D3\SQLEXPRESS;Initial Catalog=dwCopy;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-SV09T1D3\SQLEXPRESS.dw_prod]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A58DDF16-2E56-45C3-BB89-D7A22A5FFCA1}"
+      DTS:ObjectName="LAPTOP-SV09T1D3\SQLEXPRESS.dw_prod">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LAPTOP-SV09T1D3\SQLEXPRESS;Initial Catalog=dw_prod;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-SV09T1D3\SQLEXPRESS.eConCopy]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F3972BE5-2E8E-43E7-85F8-F6609FCC9C25}"
+      DTS:ObjectName="LAPTOP-SV09T1D3\SQLEXPRESS.eConCopy">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LAPTOP-SV09T1D3\SQLEXPRESS;Initial Catalog=eConCopy;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-SV09T1D3\SQLEXPRESS.stage_db]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{37ED955A-BC9F-4629-B87F-00B347270DB9}"
+      DTS:ObjectName="LAPTOP-SV09T1D3\SQLEXPRESS.stage_db">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LAPTOP-SV09T1D3\SQLEXPRESS;Initial Catalog=stage_db;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -134,8 +174,8 @@
                   <connections>
                     <connection
                       refId="Package\Data entering loading area\extract data ready for load\extract from staging database.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[BODIL\SQLEXPRESS.Stage_Db]"
-                      connectionManagerRefId="Package.ConnectionManagers[BODIL\SQLEXPRESS.Stage_Db]"
+                      connectionManagerID="Package.ConnectionManagers[LAPTOP-SV09T1D3\SQLEXPRESS.stage_db]"
+                      connectionManagerRefId="Package.ConnectionManagers[LAPTOP-SV09T1D3\SQLEXPRESS.stage_db]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -269,8 +309,8 @@
                   <connections>
                     <connection
                       refId="Package\Data entering loading area\extract data ready for load\warehouse database copy.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[BODIL\SQLEXPRESS.dw_db]"
-                      connectionManagerRefId="Package.ConnectionManagers[BODIL\SQLEXPRESS.dw_db]"
+                      connectionManagerID="Package.ConnectionManagers[LAPTOP-SV09T1D3\SQLEXPRESS.dw_prod]"
+                      connectionManagerRefId="Package.ConnectionManagers[LAPTOP-SV09T1D3\SQLEXPRESS.dw_prod]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -370,8 +410,8 @@
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{19D92E26-1A07-445D-B3E9-49054247A1C0}"
-              SQLTask:SqlStatementSource="truncate table customer" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:Connection="{37ED955A-BC9F-4629-B87F-00B347270DB9}"
+              SQLTask:SqlStatementSource="delete from customer" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -439,8 +479,8 @@
                   <connections>
                     <connection
                       refId="Package\Data entering staging area\extract and reposition data\Econ datakilde.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[BODIL\SQLEXPRESS.eCon]"
-                      connectionManagerRefId="Package.ConnectionManagers[BODIL\SQLEXPRESS.eCon]"
+                      connectionManagerID="Package.ConnectionManagers[LAPTOP-SV09T1D3\SQLEXPRESS.eConCopy]"
+                      connectionManagerRefId="Package.ConnectionManagers[LAPTOP-SV09T1D3\SQLEXPRESS.eConCopy]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -574,8 +614,8 @@
                   <connections>
                     <connection
                       refId="Package\Data entering staging area\extract and reposition data\staging database.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[BODIL\SQLEXPRESS.Stage_Db]"
-                      connectionManagerRefId="Package.ConnectionManagers[BODIL\SQLEXPRESS.Stage_Db]"
+                      connectionManagerID="Package.ConnectionManagers[LAPTOP-SV09T1D3\SQLEXPRESS.stage_db]"
+                      connectionManagerRefId="Package.ConnectionManagers[LAPTOP-SV09T1D3\SQLEXPRESS.stage_db]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -674,6 +714,38 @@
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
+          DTS:refId="Package\Data transformation\clear customer table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{D20246C0-050A-4A46-A8A1-8D0BAB32447D}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="clear customer table"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{A29FF59D-B03D-4BCF-8901-D08DB16F080D}"
+              SQLTask:SqlStatementSource="delete from dCustomer" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Data transformation\clear sales table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{33D91C65-9551-46A9-89DF-C7F971C91D21}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="clear sales table"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{A29FF59D-B03D-4BCF-8901-D08DB16F080D}"
+              SQLTask:SqlStatementSource="delete from fSale" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\Data transformation\extracting data from prod_dw"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
@@ -746,8 +818,8 @@
                   <connections>
                     <connection
                       refId="Package\Data transformation\extracting data from prod_dw\dw_db customer table.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[BODIL\SQLEXPRESS.dw_db]"
-                      connectionManagerRefId="Package.ConnectionManagers[BODIL\SQLEXPRESS.dw_db]"
+                      connectionManagerID="Package.ConnectionManagers[LAPTOP-SV09T1D3\SQLEXPRESS.dwCopy]"
+                      connectionManagerRefId="Package.ConnectionManagers[LAPTOP-SV09T1D3\SQLEXPRESS.dwCopy]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -863,8 +935,8 @@
                   <connections>
                     <connection
                       refId="Package\Data transformation\extracting data from prod_dw\prod_db customer table.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[BODIL\SQLEXPRESS.prod_db]"
-                      connectionManagerRefId="Package.ConnectionManagers[BODIL\SQLEXPRESS.prod_db]"
+                      connectionManagerID="Package.ConnectionManagers[LAPTOP-SV09T1D3\SQLEXPRESS.dw_prod]"
+                      connectionManagerRefId="Package.ConnectionManagers[LAPTOP-SV09T1D3\SQLEXPRESS.dw_prod]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -951,34 +1023,48 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Data transformation\transform"
+          DTS:refId="Package\Data transformation\replace null customer names"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
           DTS:DTSID="{F8E39F7D-C90B-4C0E-A920-85EA61A4D876}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="transform"
+          DTS:ObjectName="replace null customer names"
           DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
-            <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\Data transformation\truncate"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
-          DTS:DTSID="{D20246C0-050A-4A46-A8A1-8D0BAB32447D}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="truncate"
-          DTS:ThreadHint="1">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{37ED955A-BC9F-4629-B87F-00B347270DB9}"
+              SQLTask:SqlStatementSource="UPDATE customer&#xA;SET name =&#xA;CASE &#xA;WHEN name IS NULL THEN 'Unknown'&#xA;ELSE name&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Data transformation.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{8FE447C1-64D8-4229-8FFD-6EB2D5881D15}"
+          DTS:From="Package\Data transformation\clear customer table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Data transformation\extracting data from prod_dw" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Data transformation.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{5145C36D-FC0E-4E2A-9EC5-E63B6A20FF72}"
+          DTS:From="Package\Data transformation\extracting data from prod_dw"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Data transformation\replace null customer names" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Data transformation.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{90F750FB-AEE1-47BB-817F-D39AB310CA2D}"
+          DTS:From="Package\Data transformation\clear sales table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Data transformation\clear customer table" />
+      </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
@@ -1012,27 +1098,38 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="208,42"
-          Id="Package\Data entering staging area\extract and reposition data"
-          TopLeft="32,131" />
+          Size="206.4,41.6"
+          Id="Package\Data entering loading area\extract data ready for load"
+          TopLeft="26,55" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="264.8,291.2"
+          Size="264.8,334.4"
+          Id="Package\Data entering loading area"
+          TopLeft="808,130.523809090872" />
         <NodeLayout
-          Size="180,42"
+          Size="172,41.6"
           Id="Package\Data entering staging area\clear customer table"
           TopLeft="45,31" />
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\Data entering staging area\extract and reposition data"
+          TopLeft="32,131" />
         <EdgeLayout
           Id="Package\Data entering staging area.PrecedenceConstraints[Constraint]"
-          TopLeft="135.5,73">
+          TopLeft="133.5,72.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,58"
+              EndConnector="0,58.4"
               Start="0,0"
-              End="0,50.5">
+              End="0,50.9">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,50.5" />
+                    End="0,50.9" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1044,66 +1141,137 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="287,247"
-          Size="287,290"
+          PanelSize="287.2,288.8"
+          Size="287.2,332"
           Id="Package\Data entering staging area"
-          TopLeft="91,179" />
+          TopLeft="91,137.399999669393" />
         <NodeLayout
-          Size="221,42"
+          Size="212.8,41.6"
           Id="Package\Data transformation\extracting data from prod_dw"
-          TopLeft="31.5,112.5" />
+          TopLeft="41.0238091453673,169.947619504172" />
         <NodeLayout
-          Size="170,42"
-          Id="Package\Data transformation\truncate"
-          TopLeft="69,36" />
+          Size="212.8,41.6"
+          Id="Package\Data transformation\replace null customer names"
+          TopLeft="43.2857153075081,250.561905123998" />
         <NodeLayout
-          Size="179,42"
-          Id="Package\Data transformation\transform"
-          TopLeft="69,205" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="309,356"
-          Size="309,399"
-          Id="Package\Data transformation"
-          TopLeft="427,181" />
-        <NodeLayout
-          Size="206,42"
-          Id="Package\Data entering loading area\extract data ready for load"
-          TopLeft="26,55" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="265,237"
-          Size="265,280"
-          Id="Package\Data entering loading area"
-          TopLeft="808,185" />
+          Size="184.8,41.6"
+          Id="Package\Data transformation\clear customer table"
+          TopLeft="65.1904763418529,91.4666671074762" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="378,324">
+          Id="Package\Data transformation.PrecedenceConstraints[Constraint]"
+          TopLeft="157.590476341853,133.066667107476">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="49,56.5"
+              EndConnector="-10.1666671964856,36.8809523966955"
               Start="0,0"
-              End="41.5,56.5">
+              End="-10.1666671964856,29.3809523966955">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="20.5,0" />
+                    End="0,14.4404761983478" />
                   <mssgle:CubicBezierSegment
-                    Point1="20.5,0"
-                    Point2="24.5,0"
-                    Point3="24.5,4" />
+                    Point1="0,14.4404761983478"
+                    Point2="0,18.4404761983478"
+                    Point3="-4,18.4404761983478" />
                   <mssgle:LineSegment
-                    End="24.5,52.5" />
+                    End="-6.16666719648561,18.4404761983478" />
                   <mssgle:CubicBezierSegment
-                    Point1="24.5,52.5"
-                    Point2="24.5,56.5"
-                    Point3="28.5,56.5" />
+                    Point1="-6.16666719648561,18.4404761983478"
+                    Point2="-10.1666671964856,18.4404761983478"
+                    Point3="-10.1666671964856,22.4404761983478" />
                   <mssgle:LineSegment
-                    End="41.5,56.5" />
+                    End="-10.1666671964856,29.3809523966955" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data transformation.PrecedenceConstraints[Constraint 1]"
+          TopLeft="148.554762226438,211.547619504172">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.0142856198266"
+              Start="0,0"
+              End="0,31.5142856198266">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5142856198266" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\Data transformation\clear sales table"
+          TopLeft="69.3095212739612,16.7929878962855" />
+        <EdgeLayout
+          Id="Package\Data transformation.PrecedenceConstraints[Constraint 2]"
+          TopLeft="156.849998807907,58.3929878962855">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.0736792111906"
+              Start="0,0"
+              End="0,25.5736792111906">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5736792111906" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="308.8,407.2"
+          Size="308.8,450.4"
+          Id="Package\Data transformation"
+          TopLeft="427,129.495237685915" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="378.2,303.399999669393">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="48.8,51.2952380165221"
+              Start="0,0"
+              End="41.3,51.2952380165221">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="20.4,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="20.4,0"
+                    Point2="24.4,0"
+                    Point3="24.4,4" />
+                  <mssgle:LineSegment
+                    End="24.4,47.2952380165221" />
+                  <mssgle:CubicBezierSegment
+                    Point1="24.4,47.2952380165221"
+                    Point2="24.4,51.2952380165221"
+                    Point3="28.4,51.2952380165221" />
+                  <mssgle:LineSegment
+                    End="41.3,51.2952380165221" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1114,30 +1282,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="736,380.5">
+          TopLeft="735.8,354.695237685915">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="72,-55.5"
+              EndConnector="72.2,-56.9714285950433"
               Start="0,0"
-              End="64.5,-55.5">
+              End="64.7,-56.9714285950433">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="32,0" />
+                    End="32.1,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="32,0"
-                    Point2="36,0"
-                    Point3="36,-4" />
+                    Point1="32.1,0"
+                    Point2="36.1,0"
+                    Point3="36.1,-4" />
                   <mssgle:LineSegment
-                    End="36,-51.5" />
+                    End="36.1,-52.9714285950433" />
                   <mssgle:CubicBezierSegment
-                    Point1="36,-51.5"
-                    Point2="36,-55.5"
-                    Point3="40,-55.5" />
+                    Point1="36.1,-52.9714285950433"
+                    Point2="36.1,-56.9714285950433"
+                    Point3="40.1,-56.9714285950433" />
                   <mssgle:LineSegment
-                    End="64.5,-55.5" />
+                    End="64.7,-56.9714285950433" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1150,18 +1318,82 @@
     </LayoutInfo>
   </Package>
   <TaskHost
+    design-time-name="Package\Data entering loading area\extract data ready for load">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="207.2,41.6"
+          Id="Package\Data entering loading area\extract data ready for load\warehouse database copy"
+          TopLeft="181,291" />
+        <NodeLayout
+          Size="224,41.6"
+          Id="Package\Data entering loading area\extract data ready for load\extract from staging database"
+          TopLeft="175,194" />
+        <EdgeLayout
+          Id="Package\Data entering loading area\extract data ready for load.Paths[OLE DB Source Output]"
+          TopLeft="285.75,236">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55"
+              Start="0,0"
+              End="0,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data entering loading area\extract data ready for load\extract from staging database">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data entering loading area\extract data ready for load\warehouse database copy">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\Data entering staging area\extract and reposition data">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="151,42"
-          Id="Package\Data entering staging area\extract and reposition data\Econ datakilde"
-          TopLeft="167,131" />
-        <NodeLayout
-          Size="163,42"
+          Size="163.2,41.6"
           Id="Package\Data entering staging area\extract and reposition data\staging database"
           TopLeft="165,244" />
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\Data entering staging area\extract and reposition data\Econ datakilde"
+          TopLeft="167,131" />
         <EdgeLayout
           Id="Package\Data entering staging area\extract and reposition data.Paths[OLE DB Source Output]"
           TopLeft="244.5,173">
@@ -1219,11 +1451,11 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="194,42"
+          Size="193.6,41.6"
           Id="Package\Data transformation\extracting data from prod_dw\prod_db customer table"
           TopLeft="277,223" />
         <NodeLayout
-          Size="186,42"
+          Size="185.6,41.6"
           Id="Package\Data transformation\extracting data from prod_dw\dw_db customer table"
           TopLeft="284,332" />
         <EdgeLayout
@@ -1252,19 +1484,6 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data transformation\extracting data from prod_dw\prod_db customer table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Data transformation\extracting data from prod_dw\dw_db customer table">
     <Properties>
       <Property>
@@ -1277,59 +1496,8 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Data entering loading area\extract data ready for load">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="224,42"
-          Id="Package\Data entering loading area\extract data ready for load\extract from staging database"
-          TopLeft="175,194" />
-        <NodeLayout
-          Size="207,42"
-          Id="Package\Data entering loading area\extract data ready for load\warehouse database copy"
-          TopLeft="181,291" />
-        <EdgeLayout
-          Id="Package\Data entering loading area\extract data ready for load.Paths[OLE DB Source Output]"
-          TopLeft="285.75,236">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,55"
-              Start="0,0"
-              End="0,47.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,47.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data entering loading area\extract data ready for load\extract from staging database">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data entering loading area\extract data ready for load\warehouse database copy">
+    design-time-name="Package\Data transformation\extracting data from prod_dw\prod_db customer table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
