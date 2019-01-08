@@ -11,29 +11,29 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="stagingArea"
   DTS:PackageType="5"
-  DTS:VersionBuild="33"
-  DTS:VersionGUID="{6E0BC3FC-39CA-4DCC-BA1E-89AFB9717409}">
+  DTS:VersionBuild="50"
+  DTS:VersionGUID="{958237B2-A310-410F-A37D-D4E30BFAFA24}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[BODIL\SQLEXPRESS.dw_db]"
+      DTS:refId="Package.ConnectionManagers[BODIL\SQLEXPRESS.dwCopy_db]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{48A88D6F-593D-4486-9A80-CCE9F0A8BFC8}"
-      DTS:ObjectName="BODIL\SQLEXPRESS.dw_db">
+      DTS:DTSID="{43D1CC62-256C-4E3C-BB5A-BD6FDCA8770F}"
+      DTS:ObjectName="BODIL\SQLEXPRESS.dwCopy_db">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=BODIL\SQLEXPRESS;Initial Catalog=dw_db;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=BODIL\SQLEXPRESS;Initial Catalog=dwCopy_db;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[BODIL\SQLEXPRESS.eCon]"
+      DTS:refId="Package.ConnectionManagers[BODIL\SQLEXPRESS.eCon_db]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{F2592019-48B7-4B34-B8F4-2F07AA29D46C}"
-      DTS:ObjectName="BODIL\SQLEXPRESS.eCon">
+      DTS:DTSID="{50D9CA86-C7F7-4219-BA00-84A8F2A8D1EC}"
+      DTS:ObjectName="BODIL\SQLEXPRESS.eCon_db">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=BODIL\SQLEXPRESS;Initial Catalog=eCon;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=BODIL\SQLEXPRESS;Initial Catalog=eCon_db;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -56,46 +56,6 @@
           DTS:ConnectionString="Data Source=BODIL\SQLEXPRESS;Initial Catalog=Stage_Db;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[LAPTOP-SV09T1D3\SQLEXPRESS.dwCopy]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{A29FF59D-B03D-4BCF-8901-D08DB16F080D}"
-      DTS:ObjectName="LAPTOP-SV09T1D3\SQLEXPRESS.dwCopy">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=LAPTOP-SV09T1D3\SQLEXPRESS;Initial Catalog=dwCopy;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[LAPTOP-SV09T1D3\SQLEXPRESS.dw_prod]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{A58DDF16-2E56-45C3-BB89-D7A22A5FFCA1}"
-      DTS:ObjectName="LAPTOP-SV09T1D3\SQLEXPRESS.dw_prod">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=LAPTOP-SV09T1D3\SQLEXPRESS;Initial Catalog=dw_prod;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[LAPTOP-SV09T1D3\SQLEXPRESS.eConCopy]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{F3972BE5-2E8E-43E7-85F8-F6609FCC9C25}"
-      DTS:ObjectName="LAPTOP-SV09T1D3\SQLEXPRESS.eConCopy">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=LAPTOP-SV09T1D3\SQLEXPRESS;Initial Catalog=eConCopy;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[LAPTOP-SV09T1D3\SQLEXPRESS.stage_db]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{37ED955A-BC9F-4629-B87F-00B347270DB9}"
-      DTS:ObjectName="LAPTOP-SV09T1D3\SQLEXPRESS.stage_db">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=LAPTOP-SV09T1D3\SQLEXPRESS;Initial Catalog=stage_db;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
@@ -109,6 +69,22 @@
       DTS:ObjectName="Data entering loading area">
       <DTS:Variables />
       <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Data entering loading area\clear dw copy tables"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{5206397D-2AA0-4CB9-8780-E83600AC9025}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="clear dw copy tables"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{43D1CC62-256C-4E3C-BB5A-BD6FDCA8770F}"
+              SQLTask:SqlStatementSource="delete from dCustomer&#xA;delete from dDate&#xA;delete from fSale" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
         <DTS:Executable
           DTS:refId="Package\Data entering loading area\extract customer data ready for load"
           DTS:CreationName="Microsoft.Pipeline"
@@ -288,19 +264,19 @@
                       dataType="System.Int32"
                       description="Specifies the mode used to access the database."
                       name="AccessMode"
-                      typeConverter="AccessMode">0</property>
+                      typeConverter="AccessMode">3</property>
                     <property
                       dataType="System.Boolean"
                       description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                      name="FastLoadKeepIdentity">false</property>
+                      name="FastLoadKeepIdentity">true</property>
                     <property
                       dataType="System.Boolean"
                       description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                      name="FastLoadKeepNulls">false</property>
+                      name="FastLoadKeepNulls">true</property>
                     <property
                       dataType="System.String"
                       description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                      name="FastLoadOptions"></property>
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
@@ -309,8 +285,8 @@
                   <connections>
                     <connection
                       refId="Package\Data entering loading area\extract customer data ready for load\warehouse database copy.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[BODIL\SQLEXPRESS.dw_db]"
-                      connectionManagerRefId="Package.ConnectionManagers[BODIL\SQLEXPRESS.dw_db]"
+                      connectionManagerID="Package.ConnectionManagers[BODIL\SQLEXPRESS.dwCopy_db]"
+                      connectionManagerRefId="Package.ConnectionManagers[BODIL\SQLEXPRESS.dwCopy_db]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -398,7 +374,726 @@
           <DTS:Variables />
           <DTS:ObjectData>
             <pipeline
-              version="1" />
+              version="1">
+              <components>
+                <component
+                  refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[fSale]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">true</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[BODIL\SQLEXPRESS.dwCopy_db]"
+                      connectionManagerRefId="Package.ConnectionManagers[BODIL\SQLEXPRESS.dwCopy_db]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id]"
+                          cachedDataType="i4"
+                          cachedName="id"
+                          externalMetadataColumnId="Package\Data entering loading area\extract sales data ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          lineageId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]" />
+                        <inputColumn
+                          refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[amount]"
+                          cachedDataType="i4"
+                          cachedName="amount"
+                          externalMetadataColumnId="Package\Data entering loading area\extract sales data ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[amount]"
+                          lineageId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[amount]" />
+                        <inputColumn
+                          refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[date]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="date"
+                          externalMetadataColumnId="Package\Data entering loading area\extract sales data ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date]"
+                          lineageId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[date]" />
+                        <inputColumn
+                          refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[customerId]"
+                          cachedDataType="i4"
+                          cachedName="customerId"
+                          externalMetadataColumnId="Package\Data entering loading area\extract sales data ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[customerId]"
+                          lineageId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[customerId]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[amount]"
+                          dataType="i4"
+                          name="amount" />
+                        <externalMetadataColumn
+                          refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date]"
+                          dataType="dbTimeStamp"
+                          name="date" />
+                        <externalMetadataColumn
+                          refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[customerId]"
+                          dataType="i4"
+                          name="customerId" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Data entering loading area\extract sales data ready for load\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Data entering loading area\extract sales data ready for load\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Data entering loading area\extract sales data ready for load\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[sale]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[BODIL\SQLEXPRESS.Stage_Db]"
+                      connectionManagerRefId="Package.ConnectionManagers[BODIL\SQLEXPRESS.Stage_Db]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                          lineageId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]"
+                          name="id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[amount]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[amount]"
+                          lineageId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[amount]"
+                          name="amount"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[date]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[date]"
+                          lineageId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[date]"
+                          name="date"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[customerId]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[customerId]"
+                          lineageId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[customerId]"
+                          name="customerId"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[amount]"
+                          dataType="i4"
+                          name="amount" />
+                        <externalMetadataColumn
+                          refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[date]"
+                          dataType="dbTimeStamp"
+                          name="date" />
+                        <externalMetadataColumn
+                          refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[customerId]"
+                          dataType="i4"
+                          name="customerId" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id]"
+                          dataType="i4"
+                          lineageId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id]"
+                          name="id" />
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[amount]"
+                          dataType="i4"
+                          lineageId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[amount]"
+                          name="amount" />
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[date]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[date]"
+                          name="date" />
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[customerId]"
+                          dataType="i4"
+                          lineageId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[customerId]"
+                          name="customerId" />
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Data entering loading area\extract sales data ready for load.Paths[OLE DB Source Output]"
+                  endId="Package\Data entering loading area\extract sales data ready for load\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Data entering loading area\extract sales data ready for load\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Data entering loading area\extract timetable ready for load"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{C4A36272-A59E-4973-8F13-92B28AD92AF8}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="extract timetable ready for load"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[dDate]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[BODIL\SQLEXPRESS.dwCopy_db]"
+                      connectionManagerRefId="Package.ConnectionManagers[BODIL\SQLEXPRESS.dwCopy_db]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[date]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="date"
+                          externalMetadataColumnId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date]"
+                          lineageId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[date]" />
+                        <inputColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[year]"
+                          cachedDataType="i4"
+                          cachedName="year"
+                          externalMetadataColumnId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[year]"
+                          lineageId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[year]" />
+                        <inputColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[month]"
+                          cachedDataType="i4"
+                          cachedName="month"
+                          externalMetadataColumnId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[month]"
+                          lineageId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[month]" />
+                        <inputColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[day]"
+                          cachedDataType="i4"
+                          cachedName="day"
+                          externalMetadataColumnId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[day]"
+                          lineageId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[day]" />
+                        <inputColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[hour]"
+                          cachedDataType="i4"
+                          cachedName="hour"
+                          externalMetadataColumnId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[hour]"
+                          lineageId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[hour]" />
+                        <inputColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[second]"
+                          cachedDataType="i4"
+                          cachedName="second"
+                          externalMetadataColumnId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[second]"
+                          lineageId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[second]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date]"
+                          dataType="dbTimeStamp"
+                          name="date" />
+                        <externalMetadataColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[year]"
+                          dataType="i4"
+                          name="year" />
+                        <externalMetadataColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[month]"
+                          dataType="i4"
+                          name="month" />
+                        <externalMetadataColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[day]"
+                          dataType="i4"
+                          name="day" />
+                        <externalMetadataColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[hour]"
+                          dataType="i4"
+                          name="hour" />
+                        <externalMetadataColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[second]"
+                          dataType="i4"
+                          name="second" />
+                        <externalMetadataColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[minute]"
+                          dataType="i4"
+                          name="minute" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[date]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[BODIL\SQLEXPRESS.Stage_Db]"
+                      connectionManagerRefId="Package.ConnectionManagers[BODIL\SQLEXPRESS.Stage_Db]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[date]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[date]"
+                          lineageId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[date]"
+                          name="date"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[year]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[year]"
+                          lineageId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[year]"
+                          name="year"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[month]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[month]"
+                          lineageId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[month]"
+                          name="month"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[day]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[day]"
+                          lineageId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[day]"
+                          name="day"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[hour]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[hour]"
+                          lineageId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[hour]"
+                          name="hour"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[second]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[second]"
+                          lineageId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[second]"
+                          name="second"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[minute]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[minute]"
+                          lineageId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].Columns[minute]"
+                          name="minute"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[date]"
+                          dataType="dbTimeStamp"
+                          name="date" />
+                        <externalMetadataColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[year]"
+                          dataType="i4"
+                          name="year" />
+                        <externalMetadataColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[month]"
+                          dataType="i4"
+                          name="month" />
+                        <externalMetadataColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[day]"
+                          dataType="i4"
+                          name="day" />
+                        <externalMetadataColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[hour]"
+                          dataType="i4"
+                          name="hour" />
+                        <externalMetadataColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[second]"
+                          dataType="i4"
+                          name="second" />
+                        <externalMetadataColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[minute]"
+                          dataType="i4"
+                          name="minute" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[date]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[date]"
+                          name="date" />
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[year]"
+                          dataType="i4"
+                          lineageId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[year]"
+                          name="year" />
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[month]"
+                          dataType="i4"
+                          lineageId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[month]"
+                          name="month" />
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[day]"
+                          dataType="i4"
+                          lineageId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[day]"
+                          name="day" />
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[hour]"
+                          dataType="i4"
+                          lineageId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[hour]"
+                          name="hour" />
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[minute]"
+                          dataType="i4"
+                          lineageId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[minute]"
+                          name="minute" />
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[second]"
+                          dataType="i4"
+                          lineageId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[second]"
+                          name="second" />
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Data entering loading area\extract timetable ready for load.Paths[OLE DB Source Output]"
+                  endId="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Data entering loading area\extract timetable ready for load\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -411,6 +1106,22 @@
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
           DTS:To="Package\Data entering loading area\extract sales data ready for load" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Data entering loading area.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{D00D4EDE-BEE7-4A85-9137-6726C56C9F54}"
+          DTS:From="Package\Data entering loading area\extract timetable ready for load"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Data entering loading area\extract customer data ready for load" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Data entering loading area.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{A2253BDE-F303-407E-9D35-FEBA2D2E3F63}"
+          DTS:From="Package\Data entering loading area\clear dw copy tables"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Data entering loading area\extract timetable ready for load" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -520,8 +1231,8 @@
                   <connections>
                     <connection
                       refId="Package\Data entering staging area\extract and reposition customer data\Econ datakilde.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[BODIL\SQLEXPRESS.eCon]"
-                      connectionManagerRefId="Package.ConnectionManagers[BODIL\SQLEXPRESS.eCon]"
+                      connectionManagerID="Package.ConnectionManagers[BODIL\SQLEXPRESS.eCon_db]"
+                      connectionManagerRefId="Package.ConnectionManagers[BODIL\SQLEXPRESS.eCon_db]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -797,8 +1508,8 @@
                   <connections>
                     <connection
                       refId="Package\Data entering staging area\extract and reposition sales data\eCon datakilde.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[BODIL\SQLEXPRESS.eCon]"
-                      connectionManagerRefId="Package.ConnectionManagers[BODIL\SQLEXPRESS.eCon]"
+                      connectionManagerID="Package.ConnectionManagers[BODIL\SQLEXPRESS.eCon_db]"
+                      connectionManagerRefId="Package.ConnectionManagers[BODIL\SQLEXPRESS.eCon_db]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -1115,6 +1826,22 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\Data transformation\clear time table"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{D779C4E5-9A39-4797-9136-6BF8B15FAE1E}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="clear time table"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{19D92E26-1A07-445D-B3E9-49054247A1C0}"
+              SQLTask:SqlStatementSource=" truncate table date" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\Data transformation\extract customer data from prod_dw"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
@@ -1392,6 +2119,22 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\Data transformation\populate timetable"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{66E2A1AC-9BB0-467D-B0D6-3BACF37ED095}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="populate timetable"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{19D92E26-1A07-445D-B3E9-49054247A1C0}"
+              SQLTask:SqlStatementSource="DECLARE @Start datetime&#xA;DECLARE @End datetime&#xA;SELECT @Start = '01/01/2017',@End = '01/02/2018' &#xA;&#xA;DECLARE @dCounter datetime&#xA;SELECT @dCounter = @Start&#xA;&#xA;WHILE @dCounter &lt;= @End&#xA;BEGIN INSERT INTO date ([date], [year], [month], [day], [hour], [minute], [second]) VALUES (@dCounter, DATEPART(year, @dcounter), DATEPART(month, @dcounter), DATEPART(day, @dcounter), DATEPART(hour, @dcounter), DATEPART(minute, @dcounter), DATEPART(second, @dcounter))&#xA;SELECT @dCounter=DATEADD(hour,1, @dcounter)&#xA;&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\Data transformation\remove existing customers"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
@@ -1442,6 +2185,14 @@
           DTS:ObjectName="Constraint 1"
           DTS:To="Package\Data transformation\replace null customer names" />
         <DTS:PrecedenceConstraint
+          DTS:refId="Package\Data transformation.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{51007876-3AF9-4BC4-9800-D948234B468B}"
+          DTS:From="Package\Data transformation\clear time table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Data transformation\populate timetable" />
+        <DTS:PrecedenceConstraint
           DTS:refId="Package\Data transformation.PrecedenceConstraints[Constraint 3]"
           DTS:CreationName=""
           DTS:DTSID="{0F49D1AF-86E2-44B0-8EC8-E90BAC36DD3B}"
@@ -1449,6 +2200,14 @@
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 3"
           DTS:To="Package\Data transformation\remove existing customers" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Data transformation.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{43949DC8-09CA-428A-9AAB-892C1047AFE1}"
+          DTS:From="Package\Data transformation\populate timetable"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\Data transformation\clear dwcustomerCopy table" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
@@ -1485,37 +2244,113 @@
         <NodeLayout
           Size="254,42"
           Id="Package\Data entering loading area\extract customer data ready for load"
-          TopLeft="26,55" />
+          TopLeft="44,171" />
         <NodeLayout
           Size="235,42"
           Id="Package\Data entering loading area\extract sales data ready for load"
-          TopLeft="48,124" />
+          TopLeft="44,224" />
         <EdgeLayout
           Id="Package\Data entering loading area.PrecedenceConstraints[Constraint]"
-          TopLeft="153,97">
+          TopLeft="298,192">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="12.5,27"
+              EndConnector="-19,53"
               Start="0,0"
-              End="12.5,19.5">
+              End="-11.5,53">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,9.5" />
+                    End="18.5,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,9.5"
-                    Point2="0,13.5"
-                    Point3="4,13.5" />
+                    Point1="18.5,0"
+                    Point2="22.5,0"
+                    Point3="22.5,4" />
                   <mssgle:LineSegment
-                    End="8.5,13.5" />
+                    End="22.5,49" />
                   <mssgle:CubicBezierSegment
-                    Point1="8.5,13.5"
-                    Point2="12.5,13.5"
-                    Point3="12.5,17.5" />
+                    Point1="22.5,49"
+                    Point2="22.5,53"
+                    Point3="18.5,53" />
                   <mssgle:LineSegment
-                    End="12.5,19.5" />
+                    End="-11.5,53" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="230,42"
+          Id="Package\Data entering loading area\extract timetable ready for load"
+          TopLeft="45.5,111.976311336717" />
+        <EdgeLayout
+          Id="Package\Data entering loading area.PrecedenceConstraints[Constraint 1]"
+          TopLeft="45.5,132.976311336717">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-1.5,59.0236886632826"
+              Start="0,0"
+              End="-9,59.0236886632826">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-20,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-20,0"
+                    Point2="-24,0"
+                    Point3="-24,4" />
+                  <mssgle:LineSegment
+                    End="-24,55.0236886632826" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-24,55.0236886632826"
+                    Point2="-24,59.0236886632826"
+                    Point3="-20,59.0236886632826" />
+                  <mssgle:LineSegment
+                    End="-9,59.0236886632826" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Data entering loading area\clear dw copy tables"
+          TopLeft="9.5,12.5" />
+        <EdgeLayout
+          Id="Package\Data entering loading area.PrecedenceConstraints[Constraint 2]"
+          TopLeft="99,54.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="61.5,57.4763113367174"
+              Start="0,0"
+              End="61.5,49.9763113367174">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.7381556683587" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.7381556683587"
+                    Point2="0,28.7381556683587"
+                    Point3="4,28.7381556683587" />
+                  <mssgle:LineSegment
+                    End="57.5,28.7381556683587" />
+                  <mssgle:CubicBezierSegment
+                    Point1="57.5,28.7381556683587"
+                    Point2="61.5,28.7381556683587"
+                    Point3="61.5,32.7381556683587" />
+                  <mssgle:LineSegment
+                    End="61.5,49.9763113367174" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1527,10 +2362,10 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="330,291"
-          Size="330,334"
+          PanelSize="398,321"
+          Size="398,364"
           Id="Package\Data entering loading area"
-          TopLeft="1003,137.523809090872" />
+          TopLeft="903,75.523809090872" />
         <NodeLayout
           Size="178,42"
           Id="Package\Data entering staging area\clear customer table"
@@ -1631,45 +2466,71 @@
           PanelSize="332,353"
           Size="332,396"
           Id="Package\Data entering staging area"
-          TopLeft="90,143.399999669393" />
+          TopLeft="89,73.399999669393" />
         <NodeLayout
-          Size="210,42"
-          Id="Package\Data transformation\remove existing customers"
-          TopLeft="42,225" />
+          Size="218,42"
+          Id="Package\Data transformation\clear dwcustomerCopy table"
+          TopLeft="44.9761908546327,169" />
         <NodeLayout
           Size="254,42"
           Id="Package\Data transformation\extract customer data from prod_dw"
-          TopLeft="27.0238091453673,94.947619504172" />
+          TopLeft="28,232.947619504172" />
+        <NodeLayout
+          Size="210,42"
+          Id="Package\Data transformation\remove existing customers"
+          TopLeft="53.9761908546327,372" />
         <NodeLayout
           Size="224,42"
           Id="Package\Data transformation\replace null customer names"
-          TopLeft="39.2857153075081,158.561905123998" />
+          TopLeft="46.2619061621408,310.561905123998" />
         <EdgeLayout
-          Id="Package\Data transformation.PrecedenceConstraints[Constraint 1]"
-          TopLeft="281.023809145367,115.947619504172">
+          Id="Package\Data transformation.PrecedenceConstraints[Constraint]"
+          TopLeft="44.9761908546327,190">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-17.7380938378592,63.614285619826"
+              EndConnector="-16.9761908546327,63.947619504172"
               Start="0,0"
-              End="-10.2380938378592,63.614285619826">
+              End="-24.4761908546327,63.947619504172">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="18.5,0" />
+                    End="-35.4761908546327,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="18.5,0"
-                    Point2="22.5,0"
-                    Point3="22.5,4" />
+                    Point1="-35.4761908546327,0"
+                    Point2="-39.4761908546327,0"
+                    Point3="-39.4761908546327,4" />
                   <mssgle:LineSegment
-                    End="22.5,59.614285619826" />
+                    End="-39.4761908546327,59.947619504172" />
                   <mssgle:CubicBezierSegment
-                    Point1="22.5,59.614285619826"
-                    Point2="22.5,63.614285619826"
-                    Point3="18.5,63.614285619826" />
+                    Point1="-39.4761908546327,59.947619504172"
+                    Point2="-39.4761908546327,63.947619504172"
+                    Point3="-35.4761908546327,63.947619504172" />
                   <mssgle:LineSegment
-                    End="-10.2380938378592,63.614285619826" />
+                    End="-24.4761908546327,63.947619504172" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data transformation.PrecedenceConstraints[Constraint 1]"
+          TopLeft="156.63095308107,274.947619504172">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.614285619826"
+              Start="0,0"
+              End="0,28.114285619826">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.114285619826" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1680,18 +2541,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data transformation.PrecedenceConstraints[Constraint 3]"
-          TopLeft="149.142857653754,200.561905123998">
+          TopLeft="46.2619061621408,331.561905123998">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,24.438094876002"
+              EndConnector="7.7142846924919,61.438094876002"
               Start="0,0"
-              End="0,16.938094876002">
+              End="0.214284692491901,61.438094876002">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.938094876002" />
+                    End="-18.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-18.5,0"
+                    Point2="-22.5,0"
+                    Point3="-22.5,4" />
+                  <mssgle:LineSegment
+                    End="-22.5,57.438094876002" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22.5,57.438094876002"
+                    Point2="-22.5,61.438094876002"
+                    Point3="-18.5,61.438094876002" />
+                  <mssgle:LineSegment
+                    End="0.214284692491901,61.438094876002" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1701,23 +2574,49 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="218,42"
-          Id="Package\Data transformation\clear dwcustomerCopy table"
-          TopLeft="48,21" />
+          Size="154,42"
+          Id="Package\Data transformation\clear time table"
+          TopLeft="74.4761908546327,28.9763113367174" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Data transformation\populate timetable"
+          TopLeft="68.4761908546327,98.5" />
         <EdgeLayout
-          Id="Package\Data transformation.PrecedenceConstraints[Constraint]"
-          TopLeft="155.511904572684,63">
+          Id="Package\Data transformation.PrecedenceConstraints[Constraint 2]"
+          TopLeft="152.226190854633,70.9763113367174">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,31.947619504172"
+              EndConnector="0,27.5236886632826"
               Start="0,0"
-              End="0,24.447619504172">
+              End="0,20.0236886632826">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.447619504172" />
+                    End="0,20.0236886632826" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data transformation.PrecedenceConstraints[Constraint 4]"
+          TopLeft="153.476190854633,140.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.5"
+              Start="0,0"
+              End="0,21">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1729,36 +2628,36 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="309,405"
-          Size="309,448"
+          PanelSize="309,469"
+          Size="309,512"
           Id="Package\Data transformation"
-          TopLeft="505,143.495237685915" />
+          TopLeft="497,71.495237685915" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="422,341.399999669393">
+          TopLeft="421,271.399999669393">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="83,26.095238016522"
+              EndConnector="76,56.095238016522"
               Start="0,0"
-              End="75.5,26.095238016522">
+              End="68.5,56.095238016522">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="37.5,0" />
+                    End="34,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="37.5,0"
-                    Point2="41.5,0"
-                    Point3="41.5,4" />
+                    Point1="34,0"
+                    Point2="38,0"
+                    Point3="38,4" />
                   <mssgle:LineSegment
-                    End="41.5,22.095238016522" />
+                    End="38,52.095238016522" />
                   <mssgle:CubicBezierSegment
-                    Point1="41.5,22.095238016522"
-                    Point2="41.5,26.095238016522"
-                    Point3="45.5,26.095238016522" />
+                    Point1="38,52.095238016522"
+                    Point2="38,56.095238016522"
+                    Point3="42,56.095238016522" />
                   <mssgle:LineSegment
-                    End="75.5,26.095238016522" />
+                    End="68.5,56.095238016522" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1769,30 +2668,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="814,367.495237685915">
+          TopLeft="806,327.495237685915">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="189,-62.971428595043"
+              EndConnector="97,-69.971428595043"
               Start="0,0"
-              End="181.5,-62.971428595043">
+              End="89.5,-69.971428595043">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="90.5,0" />
+                    End="44.5,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="90.5,0"
-                    Point2="94.5,0"
-                    Point3="94.5,-4" />
+                    Point1="44.5,0"
+                    Point2="48.5,0"
+                    Point3="48.5,-4" />
                   <mssgle:LineSegment
-                    End="94.5,-58.971428595043" />
+                    End="48.5,-65.971428595043" />
                   <mssgle:CubicBezierSegment
-                    Point1="94.5,-58.971428595043"
-                    Point2="94.5,-62.971428595043"
-                    Point3="98.5,-62.971428595043" />
+                    Point1="48.5,-65.971428595043"
+                    Point2="48.5,-69.971428595043"
+                    Point3="52.5,-69.971428595043" />
                   <mssgle:LineSegment
-                    End="181.5,-62.971428595043" />
+                    End="89.5,-69.971428595043" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1869,10 +2768,48 @@
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
+    design-time-name="Package\Data entering loading area\extract sales data ready for load">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Data entering loading area\extract sales data ready for load\OLE DB Source"
+          TopLeft="498,169" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Data entering loading area\extract sales data ready for load\OLE DB Destination"
+          TopLeft="493,311" />
+        <EdgeLayout
+          Id="Package\Data entering loading area\extract sales data ready for load.Paths[OLE DB Source Output]"
+          TopLeft="579,211">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,100"
+              Start="0,0"
+              End="0,92.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,92.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
     design-time-name="Package\Data entering staging area\extract and reposition customer data">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="163,42"
           Id="Package\Data entering staging area\extract and reposition customer data\staging database"
@@ -1900,9 +2837,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -1938,7 +2873,7 @@
     design-time-name="Package\Data entering staging area\extract and reposition sales data">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="152,42"
           Id="Package\Data entering staging area\extract and reposition sales data\eCon datakilde"
@@ -1966,9 +2901,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2007,12 +2940,12 @@
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="175,42"
-          Id="Package\Data transformation\extract customer data from prod_dw\export from prod-db"
-          TopLeft="277,223" />
-        <NodeLayout
-          Size="175,42"
           Id="Package\Data transformation\extract customer data from prod_dw\import to staging db"
           TopLeft="268,326" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Data transformation\extract customer data from prod_dw\export from prod-db"
+          TopLeft="277,223" />
         <EdgeLayout
           Id="Package\Data transformation\extract customer data from prod_dw.Paths[OLE DB Source Output]"
           TopLeft="364.5,265">
@@ -2051,7 +2984,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data transformation\extract customer data from prod_dw\import to staging db">
+    design-time-name="Package\Data transformation\extract customer data from prod_dw\export from prod-db">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2064,7 +2997,109 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data transformation\extract customer data from prod_dw\export from prod-db">
+    design-time-name="Package\Data transformation\extract customer data from prod_dw\import to staging db">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Data entering loading area\extract timetable ready for load">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Data entering loading area\extract timetable ready for load\OLE DB Source"
+          TopLeft="480,210" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination"
+          TopLeft="462,319" />
+        <EdgeLayout
+          Id="Package\Data entering loading area\extract timetable ready for load.Paths[OLE DB Source Output]"
+          TopLeft="558.5,252">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-8,67"
+              Start="0,0"
+              End="-8,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.5"
+                    Point2="0,33.5"
+                    Point3="-4,33.5" />
+                  <mssgle:LineSegment
+                    End="-4,33.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4,33.5"
+                    Point2="-8,33.5"
+                    Point3="-8,37.5" />
+                  <mssgle:LineSegment
+                    End="-8,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data entering loading area\extract timetable ready for load\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data entering loading area\extract sales data ready for load\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data entering loading area\extract sales data ready for load\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
