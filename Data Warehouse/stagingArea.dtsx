@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="stagingArea"
   DTS:PackageType="5"
-  DTS:VersionBuild="50"
-  DTS:VersionGUID="{958237B2-A310-410F-A37D-D4E30BFAFA24}">
+  DTS:VersionBuild="58"
+  DTS:VersionGUID="{673878E0-2A17-4BD9-890E-84C7A86A12A1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -70,6 +70,22 @@
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
+          DTS:refId="Package\Data entering loading area\add constraints"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{CC48628C-08FA-4C40-AC89-B5E823089209}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="add constraints"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{43D1CC62-256C-4E3C-BB5A-BD6FDCA8770F}"
+              SQLTask:SqlStatementSource="ALTER TABLE fSale&#xA;ADD FOREIGN KEY (customerId) REFERENCES dCustomer (customerId)&#xA;ALTER TABLE fSale&#xA;ADD FOREIGN KEY(date) REFERENCES dDate(date)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\Data entering loading area\clear dw copy tables"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
@@ -82,7 +98,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{43D1CC62-256C-4E3C-BB5A-BD6FDCA8770F}"
-              SQLTask:SqlStatementSource="delete from dCustomer&#xA;delete from dDate&#xA;delete from fSale" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="delete from fSale&#xA;delete from dCustomer&#xA;delete from dDate&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -1122,6 +1138,14 @@
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 2"
           DTS:To="Package\Data entering loading area\extract timetable ready for load" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Data entering loading area.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{A3D8CB7F-0D2A-4973-8273-575658042B38}"
+          DTS:From="Package\Data entering loading area\extract sales data ready for load"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Data entering loading area\add constraints" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -1135,35 +1159,19 @@
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\Data entering staging area\clear customer table"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
-          DTS:DTSID="{03CA42CE-2582-4642-96D2-73DC363A1D35}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="clear customer table"
-          DTS:ThreadHint="0">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{19D92E26-1A07-445D-B3E9-49054247A1C0}"
-              SQLTask:SqlStatementSource="delete from customer" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\Data entering staging area\clear sales table"
+          DTS:refId="Package\Data entering staging area\clear staging tables"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
           DTS:DTSID="{ED477822-75E5-42AE-A376-ACE7F68BDD1B}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="clear sales table"
+          DTS:ObjectName="clear staging tables"
           DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{19D92E26-1A07-445D-B3E9-49054247A1C0}"
-              SQLTask:SqlStatementSource="delete from sale" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="truncate table customer&#xA;truncate table sale&#xA;truncate table date&#xA;truncate table DwCustomerCopy" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -1776,19 +1784,11 @@
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Data entering staging area.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
-          DTS:DTSID="{14BE06CC-9F42-4AB3-836C-2BDEB78BA173}"
-          DTS:From="Package\Data entering staging area\clear customer table"
+          DTS:DTSID="{D42AE2A3-0BAF-499B-806F-D0C9371B9226}"
+          DTS:From="Package\Data entering staging area\clear staging tables"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
           DTS:To="Package\Data entering staging area\extract and reposition customer data" />
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\Data entering staging area.PrecedenceConstraints[Constraint 1]"
-          DTS:CreationName=""
-          DTS:DTSID="{289E40B2-4334-48D4-8FCE-6F4D5D89752B}"
-          DTS:From="Package\Data entering staging area\clear sales table"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint 1"
-          DTS:To="Package\Data entering staging area\clear customer table" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Data entering staging area.PrecedenceConstraints[Constraint 2]"
           DTS:CreationName=""
@@ -1809,38 +1809,6 @@
       DTS:ObjectName="Data transformation">
       <DTS:Variables />
       <DTS:Executables>
-        <DTS:Executable
-          DTS:refId="Package\Data transformation\clear dwcustomerCopy table"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
-          DTS:DTSID="{38432E72-9C1D-4886-BBA5-E2BE5E8897A3}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="clear dwcustomerCopy table"
-          DTS:ThreadHint="0">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{19D92E26-1A07-445D-B3E9-49054247A1C0}"
-              SQLTask:SqlStatementSource="delete from DwCustomerCopy" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\Data transformation\clear time table"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
-          DTS:DTSID="{D779C4E5-9A39-4797-9136-6BF8B15FAE1E}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="clear time table"
-          DTS:ThreadHint="0">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{19D92E26-1A07-445D-B3E9-49054247A1C0}"
-              SQLTask:SqlStatementSource=" truncate table date" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-          </DTS:ObjectData>
-        </DTS:Executable>
         <DTS:Executable
           DTS:refId="Package\Data transformation\extract customer data from prod_dw"
           DTS:CreationName="Microsoft.Pipeline"
@@ -2131,7 +2099,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{19D92E26-1A07-445D-B3E9-49054247A1C0}"
-              SQLTask:SqlStatementSource="DECLARE @Start datetime&#xA;DECLARE @End datetime&#xA;SELECT @Start = '01/01/2017',@End = '01/02/2018' &#xA;&#xA;DECLARE @dCounter datetime&#xA;SELECT @dCounter = @Start&#xA;&#xA;WHILE @dCounter &lt;= @End&#xA;BEGIN INSERT INTO date ([date], [year], [month], [day], [hour], [minute], [second]) VALUES (@dCounter, DATEPART(year, @dcounter), DATEPART(month, @dcounter), DATEPART(day, @dcounter), DATEPART(hour, @dcounter), DATEPART(minute, @dcounter), DATEPART(second, @dcounter))&#xA;SELECT @dCounter=DATEADD(hour,1, @dcounter)&#xA;&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="DECLARE @Start datetime&#xA;DECLARE @End datetime&#xA;SELECT @Start = '01/01/2017',@End = GETDATE()&#xA;&#xA;DECLARE @dCounter datetime&#xA;SELECT @dCounter = @Start&#xA;&#xA;WHILE @dCounter &lt;= @End&#xA;BEGIN INSERT INTO date ([date], [year], [month], [day], [hour]) VALUES (@dCounter, DATEPART(year, @dcounter), DATEPART(month, @dcounter), DATEPART(day, @dcounter), DATEPART(hour, @dcounter))&#xA;SELECT @dCounter=DATEADD(hour,1, @dcounter)&#xA;&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -2171,27 +2139,19 @@
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Data transformation.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
-          DTS:DTSID="{C9C73CFF-C1EB-4F7F-9343-254246032907}"
-          DTS:From="Package\Data transformation\clear dwcustomerCopy table"
+          DTS:DTSID="{9DBD7B24-D1DE-4867-AA14-4C193CDA01D4}"
+          DTS:From="Package\Data transformation\extract customer data from prod_dw"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
-          DTS:To="Package\Data transformation\extract customer data from prod_dw" />
+          DTS:To="Package\Data transformation\populate timetable" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Data transformation.PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
-          DTS:DTSID="{5145C36D-FC0E-4E2A-9EC5-E63B6A20FF72}"
-          DTS:From="Package\Data transformation\extract customer data from prod_dw"
+          DTS:DTSID="{0E38C6D9-4681-426F-B4D9-82F877DD72FD}"
+          DTS:From="Package\Data transformation\populate timetable"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
           DTS:To="Package\Data transformation\replace null customer names" />
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\Data transformation.PrecedenceConstraints[Constraint 2]"
-          DTS:CreationName=""
-          DTS:DTSID="{51007876-3AF9-4BC4-9800-D948234B468B}"
-          DTS:From="Package\Data transformation\clear time table"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint 2"
-          DTS:To="Package\Data transformation\populate timetable" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Data transformation.PrecedenceConstraints[Constraint 3]"
           DTS:CreationName=""
@@ -2200,14 +2160,6 @@
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 3"
           DTS:To="Package\Data transformation\remove existing customers" />
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\Data transformation.PrecedenceConstraints[Constraint 4]"
-          DTS:CreationName=""
-          DTS:DTSID="{43949DC8-09CA-428A-9AAB-892C1047AFE1}"
-          DTS:From="Package\Data transformation\populate timetable"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint 4"
-          DTS:To="Package\Data transformation\clear dwcustomerCopy table" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
@@ -2242,6 +2194,10 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="179,42"
+          Id="Package\Data entering loading area\clear dw copy tables"
+          TopLeft="61.5,20.5" />
+        <NodeLayout
           Size="254,42"
           Id="Package\Data entering loading area\extract customer data ready for load"
           TopLeft="44,171" />
@@ -2249,6 +2205,10 @@
           Size="235,42"
           Id="Package\Data entering loading area\extract sales data ready for load"
           TopLeft="44,224" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\Data entering loading area\extract timetable ready for load"
+          TopLeft="45.5,111.976311336717" />
         <EdgeLayout
           Id="Package\Data entering loading area.PrecedenceConstraints[Constraint]"
           TopLeft="298,192">
@@ -2283,10 +2243,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="230,42"
-          Id="Package\Data entering loading area\extract timetable ready for load"
-          TopLeft="45.5,111.976311336717" />
         <EdgeLayout
           Id="Package\Data entering loading area.PrecedenceConstraints[Constraint 1]"
           TopLeft="45.5,132.976311336717">
@@ -2321,36 +2277,70 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="179,42"
-          Id="Package\Data entering loading area\clear dw copy tables"
-          TopLeft="9.5,12.5" />
         <EdgeLayout
           Id="Package\Data entering loading area.PrecedenceConstraints[Constraint 2]"
-          TopLeft="99,54.5">
+          TopLeft="151,62.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="61.5,57.4763113367174"
+              EndConnector="9.5,49.476311336717"
               Start="0,0"
-              End="61.5,49.9763113367174">
+              End="9.5,41.976311336717">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.7381556683587" />
+                    End="0,20.7381556683585" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,24.7381556683587"
-                    Point2="0,28.7381556683587"
-                    Point3="4,28.7381556683587" />
+                    Point1="0,20.7381556683585"
+                    Point2="0,24.7381556683585"
+                    Point3="4,24.7381556683585" />
                   <mssgle:LineSegment
-                    End="57.5,28.7381556683587" />
+                    End="5.5,24.7381556683585" />
                   <mssgle:CubicBezierSegment
-                    Point1="57.5,28.7381556683587"
-                    Point2="61.5,28.7381556683587"
-                    Point3="61.5,32.7381556683587" />
+                    Point1="5.5,24.7381556683585"
+                    Point2="9.5,24.7381556683585"
+                    Point3="9.5,28.7381556683585" />
                   <mssgle:LineSegment
-                    End="61.5,49.9763113367174" />
+                    End="9.5,41.976311336717" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Data entering loading area\add constraints"
+          TopLeft="87.5,298.5" />
+        <EdgeLayout
+          Id="Package\Data entering loading area.PrecedenceConstraints[Constraint 3]"
+          TopLeft="161.5,266">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11,32.5"
+              Start="0,0"
+              End="11,25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.25"
+                    Point2="0,16.25"
+                    Point3="4,16.25" />
+                  <mssgle:LineSegment
+                    End="7,16.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7,16.25"
+                    Point2="11,16.25"
+                    Point3="11,20.25" />
+                  <mssgle:LineSegment
+                    End="11,25" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2362,96 +2352,58 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="398,321"
-          Size="398,364"
+          PanelSize="398,396"
+          Size="398,438"
           Id="Package\Data entering loading area"
           TopLeft="903,75.523809090872" />
         <NodeLayout
-          Size="178,42"
-          Id="Package\Data entering staging area\clear customer table"
-          TopLeft="45,107" />
-        <NodeLayout
-          Size="158,42"
-          Id="Package\Data entering staging area\clear sales table"
-          TopLeft="53,34.5" />
+          Size="174,42"
+          Id="Package\Data entering staging area\clear staging tables"
+          TopLeft="63,37.5" />
         <NodeLayout
           Size="257,42"
           Id="Package\Data entering staging area\extract and reposition customer data"
-          TopLeft="39,181" />
+          TopLeft="22,132" />
         <NodeLayout
           Size="237,42"
           Id="Package\Data entering staging area\extract and reposition sales data"
-          TopLeft="49.5,247.012068965517" />
-        <EdgeLayout
-          Id="Package\Data entering staging area.PrecedenceConstraints[Constraint]"
-          TopLeft="134,149">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="33.5,32"
-              Start="0,0"
-              End="33.5,24.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,12" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,12"
-                    Point2="0,16"
-                    Point3="4,16" />
-                  <mssgle:LineSegment
-                    End="29.5,16" />
-                  <mssgle:CubicBezierSegment
-                    Point1="29.5,16"
-                    Point2="33.5,16"
-                    Point3="33.5,20" />
-                  <mssgle:LineSegment
-                    End="33.5,24.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data entering staging area.PrecedenceConstraints[Constraint 1]"
-          TopLeft="133,76.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,30.5"
-              Start="0,0"
-              End="0,23">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="31.5,220.012068965517" />
         <EdgeLayout
           Id="Package\Data entering staging area.PrecedenceConstraints[Constraint 2]"
-          TopLeft="167.75,223">
+          TopLeft="150.25,174">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,24.012068965517"
+              EndConnector="0,46.012068965517"
               Start="0,0"
-              End="0,16.512068965517">
+              End="0,38.512068965517">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.512068965517" />
+                    End="0,38.512068965517" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data entering staging area.PrecedenceConstraints[Constraint]"
+          TopLeft="150.25,79.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.5"
+              Start="0,0"
+              End="0,45">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2468,47 +2420,57 @@
           Id="Package\Data entering staging area"
           TopLeft="89,73.399999669393" />
         <NodeLayout
-          Size="218,42"
-          Id="Package\Data transformation\clear dwcustomerCopy table"
-          TopLeft="44.9761908546327,169" />
-        <NodeLayout
           Size="254,42"
           Id="Package\Data transformation\extract customer data from prod_dw"
-          TopLeft="28,232.947619504172" />
+          TopLeft="26,48.947619504172" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Data transformation\populate timetable"
+          TopLeft="67.4761908546327,131.5" />
         <NodeLayout
           Size="210,42"
           Id="Package\Data transformation\remove existing customers"
-          TopLeft="53.9761908546327,372" />
+          TopLeft="48.9761908546327,309" />
         <NodeLayout
-          Size="224,42"
+          Size="219,42"
           Id="Package\Data transformation\replace null customer names"
-          TopLeft="46.2619061621408,310.561905123998" />
+          TopLeft="41.2619061621408,218.561905123998" />
         <EdgeLayout
-          Id="Package\Data transformation.PrecedenceConstraints[Constraint]"
-          TopLeft="44.9761908546327,190">
+          Id="Package\Data transformation.PrecedenceConstraints[Constraint 3]"
+          TopLeft="152.369048508387,260.561905123998">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-16.9761908546327,63.947619504172"
+              EndConnector="0,48.438094876002"
               Start="0,0"
-              End="-24.4761908546327,63.947619504172">
+              End="0,40.938094876002">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-35.4761908546327,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-35.4761908546327,0"
-                    Point2="-39.4761908546327,0"
-                    Point3="-39.4761908546327,4" />
+                    End="0,40.938094876002" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data transformation.PrecedenceConstraints[Constraint]"
+          TopLeft="152.488095427316,90.947619504172">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.552380495828"
+              Start="0,0"
+              End="0,33.052380495828">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="-39.4761908546327,59.947619504172" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-39.4761908546327,59.947619504172"
-                    Point2="-39.4761908546327,63.947619504172"
-                    Point3="-35.4761908546327,63.947619504172" />
-                  <mssgle:LineSegment
-                    End="-24.4761908546327,63.947619504172" />
+                    End="0,33.052380495828" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2519,104 +2481,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data transformation.PrecedenceConstraints[Constraint 1]"
-          TopLeft="156.63095308107,274.947619504172">
+          TopLeft="151.369048508387,173.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,35.614285619826"
+              EndConnector="0,45.061905123998"
               Start="0,0"
-              End="0,28.114285619826">
+              End="0,37.561905123998">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.114285619826" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data transformation.PrecedenceConstraints[Constraint 3]"
-          TopLeft="46.2619061621408,331.561905123998">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="7.7142846924919,61.438094876002"
-              Start="0,0"
-              End="0.214284692491901,61.438094876002">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-18.5,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-18.5,0"
-                    Point2="-22.5,0"
-                    Point3="-22.5,4" />
-                  <mssgle:LineSegment
-                    End="-22.5,57.438094876002" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-22.5,57.438094876002"
-                    Point2="-22.5,61.438094876002"
-                    Point3="-18.5,61.438094876002" />
-                  <mssgle:LineSegment
-                    End="0.214284692491901,61.438094876002" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Data transformation\clear time table"
-          TopLeft="74.4761908546327,28.9763113367174" />
-        <NodeLayout
-          Size="169,42"
-          Id="Package\Data transformation\populate timetable"
-          TopLeft="68.4761908546327,98.5" />
-        <EdgeLayout
-          Id="Package\Data transformation.PrecedenceConstraints[Constraint 2]"
-          TopLeft="152.226190854633,70.9763113367174">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,27.5236886632826"
-              Start="0,0"
-              End="0,20.0236886632826">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.0236886632826" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data transformation.PrecedenceConstraints[Constraint 4]"
-          TopLeft="153.476190854633,140.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,28.5"
-              Start="0,0"
-              End="0,21">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21" />
+                    End="0,37.561905123998" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2672,9 +2548,9 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="97,-69.971428595043"
+              EndConnector="97,-32.971428595043"
               Start="0,0"
-              End="89.5,-69.971428595043">
+              End="89.5,-32.971428595043">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -2685,13 +2561,13 @@
                     Point2="48.5,0"
                     Point3="48.5,-4" />
                   <mssgle:LineSegment
-                    End="48.5,-65.971428595043" />
+                    End="48.5,-28.971428595043" />
                   <mssgle:CubicBezierSegment
-                    Point1="48.5,-65.971428595043"
-                    Point2="48.5,-69.971428595043"
-                    Point3="52.5,-69.971428595043" />
+                    Point1="48.5,-28.971428595043"
+                    Point2="48.5,-32.971428595043"
+                    Point3="52.5,-32.971428595043" />
                   <mssgle:LineSegment
-                    End="89.5,-69.971428595043" />
+                    End="89.5,-32.971428595043" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2707,7 +2583,7 @@
     design-time-name="Package\Data entering loading area\extract customer data ready for load">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="207,42"
           Id="Package\Data entering loading area\extract customer data ready for load\warehouse database copy"
@@ -2735,7 +2611,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2771,7 +2649,7 @@
     design-time-name="Package\Data entering loading area\extract sales data ready for load">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="157,42"
           Id="Package\Data entering loading area\extract sales data ready for load\OLE DB Source"
@@ -2799,12 +2677,118 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data entering loading area\extract sales data ready for load\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data entering loading area\extract sales data ready for load\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Data entering loading area\extract timetable ready for load">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Data entering loading area\extract timetable ready for load\OLE DB Source"
+          TopLeft="480,210" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination"
+          TopLeft="462,319" />
+        <EdgeLayout
+          Id="Package\Data entering loading area\extract timetable ready for load.Paths[OLE DB Source Output]"
+          TopLeft="558.5,252">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-8,67"
+              Start="0,0"
+              End="-8,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.5"
+                    Point2="0,33.5"
+                    Point3="-4,33.5" />
+                  <mssgle:LineSegment
+                    End="-4,33.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4,33.5"
+                    Point2="-8,33.5"
+                    Point3="-8,37.5" />
+                  <mssgle:LineSegment
+                    End="-8,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data entering loading area\extract timetable ready for load\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Data entering staging area\extract and reposition customer data">
     <LayoutInfo>
@@ -2873,7 +2857,7 @@
     design-time-name="Package\Data entering staging area\extract and reposition sales data">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="152,42"
           Id="Package\Data entering staging area\extract and reposition sales data\eCon datakilde"
@@ -2901,7 +2885,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2937,7 +2923,7 @@
     design-time-name="Package\Data transformation\extract customer data from prod_dw">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="175,42"
           Id="Package\Data transformation\extract customer data from prod_dw\import to staging db"
@@ -2977,7 +2963,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2998,108 +2986,6 @@
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Data transformation\extract customer data from prod_dw\import to staging db">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Data entering loading area\extract timetable ready for load">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="157,42"
-          Id="Package\Data entering loading area\extract timetable ready for load\OLE DB Source"
-          TopLeft="480,210" />
-        <NodeLayout
-          Size="177,42"
-          Id="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination"
-          TopLeft="462,319" />
-        <EdgeLayout
-          Id="Package\Data entering loading area\extract timetable ready for load.Paths[OLE DB Source Output]"
-          TopLeft="558.5,252">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-8,67"
-              Start="0,0"
-              End="-8,59.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.5"
-                    Point2="0,33.5"
-                    Point3="-4,33.5" />
-                  <mssgle:LineSegment
-                    End="-4,33.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-4,33.5"
-                    Point2="-8,33.5"
-                    Point3="-8,37.5" />
-                  <mssgle:LineSegment
-                    End="-8,59.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data entering loading area\extract timetable ready for load\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data entering loading area\extract timetable ready for load\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data entering loading area\extract sales data ready for load\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data entering loading area\extract sales data ready for load\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
